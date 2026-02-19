@@ -5,57 +5,111 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Digital Love Gifts</title>
 <style>
-/* ========== ROOT VARIABLES ========== */
-:root {
-  --primary: #ff4d8d;
-  --secondary: #7b61ff;
-  --bg: #fff7fb;
-  --text: #1f1f2e;
-  --muted: #6b6b7a;
+/* ========================================
+   ROOT VARIABLES
+======================================== */
+:root{
+  --primary:#ff4d8d;
+  --secondary:#7b61ff;
+  --bg:#1b003b;
+  --text:#fff;
+  --muted:#d0cbe8;
+  --shadow:rgba(255,77,141,0.25);
+  --card-bg:#2b004f;
 }
 
-/* ========== GLOBAL STYLES ========== */
-* { box-sizing: border-box; margin:0; padding:0; }
-body { font-family: "Inter", system-ui, sans-serif; line-height:1.6; background: var(--bg); color: var(--text); }
-h1,h2,h3 { font-weight: 600; }
-p { color: var(--muted); }
-a { text-decoration:none; }
+/* ========================================
+   GLOBAL STYLES
+======================================== */
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:"Inter",system-ui,sans-serif; background:var(--bg); color:var(--text); overflow-x:hidden;}
+a{text-decoration:none; color:inherit;}
+ul{list-style:none;}
 
-/* ========== NAVIGATION ========== */
-header { display:flex; justify-content:space-between; align-items:center; padding:1rem 2rem; position:sticky; top:0; background:rgba(255,247,251,0.95); z-index:1000; box-shadow:0 2px 5px rgba(0,0,0,.05);}
-header h2 { font-size:1.3rem; color:var(--text);}
-header nav a { margin-left:1.5rem; color:var(--text); font-weight:500; transition:color .25s;}
-header nav a:hover { color:var(--primary); }
-
-/* ========== HERO ========== */
-section.hero { text-align:center; padding:6rem 1.5rem; background:linear-gradient(180deg,#fff, var(--bg)); }
-section.hero h1 { font-size:clamp(2.5rem,5vw,4rem); line-height:1.1; margin-bottom:1rem; }
-section.hero h1 span { background: linear-gradient(90deg,var(--primary),var(--secondary)); -webkit-background-clip:text; color:transparent;}
-section.hero p { max-width:650px; margin:1rem auto 2rem; font-size:1.1rem; }
-.btn { display:inline-block; padding:1rem 2rem; border-radius:999px; background:linear-gradient(90deg,var(--primary),var(--secondary)); color:#fff; font-weight:600; transition:transform .3s ease; margin-top:1rem; }
-.btn:hover { transform:translateY(-3px); }
-.btn.small { padding:.7rem 1.4rem; font-size:.9rem; }
-
-/* ========== GRID & CARDS ========== */
-.grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:2rem; margin-top:2rem;}
-.card { background:#fff; padding:2rem; border-radius:24px; box-shadow:0 20px 40px rgba(0,0,0,.08); transition: transform .35s; }
-.card:hover { transform:translateY(-8px);}
-.tag { display:inline-block; font-size:.7rem; font-weight:600; background:#ffe3ee; color:var(--primary); padding:.3rem .8rem; border-radius:999px; margin-bottom:.8rem;}
-.center { text-align:center;}
-
-/* ========== SECTIONS ========== */
-section { padding:5rem 1.5rem; max-width:1200px; margin:auto; }
-section.cta, section.blog, section.collab { padding-top:4rem; padding-bottom:4rem; }
-
-/* ========== BLOG ========== */
-section.blog p { margin-bottom:1.2rem; }
-section.blog .quote { font-size:1.2rem; font-weight:600; margin-top:2rem; font-style:italic; color:var(--primary); }
-
-/* ========== RESPONSIVE ========== */
-@media (max-width:600px){
-  section { padding:3rem 1rem;}
-  header { flex-direction:column; gap:.5rem; }
+/* ========================================
+   NAVIGATION
+======================================== */
+header{
+  display:flex; justify-content:space-between; align-items:center; padding:1rem 2rem;
+  position:sticky; top:0; background:rgba(27,0,59,0.85); z-index:1000; backdrop-filter:blur(5px);
 }
+header h2{font-size:1.4rem; font-weight:700;}
+header nav a{margin-left:1.5rem; font-weight:500; transition:color .3s;}
+header nav a:hover{color:var(--primary);}
+@media(max-width:600px){header{flex-direction:column; gap:.5rem;}}
+
+/* ========================================
+   HERO SECTION
+======================================== */
+section.hero{
+  position:relative; height:100vh; overflow:hidden;
+  display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center;
+  padding:0 1.5rem;
+}
+section.hero h1{
+  font-size:clamp(2.8rem,6vw,5rem); line-height:1.1; margin-bottom:1rem;
+  background: linear-gradient(90deg,var(--primary),var(--secondary));
+  -webkit-background-clip:text; color:transparent; text-shadow:0 0 10px rgba(255,77,141,0.6);
+}
+section.hero p{
+  font-size:1.2rem; max-width:700px; margin:0 auto 2rem; color:var(--muted);
+}
+section.hero .btn{
+  padding:1rem 2rem; border-radius:999px; font-weight:600;
+  background:linear-gradient(90deg,var(--primary),var(--secondary));
+  color:white; box-shadow:0 15px 40px var(--shadow); transition:transform .3s;
+}
+section.hero .btn:hover{transform:translateY(-4px);}
+
+/* ========================================
+   STAR CANVAS & HEARTS
+======================================== */
+#heroCanvas{position:absolute; top:0; left:0; width:100%; height:100%; z-index:0;}
+#hearts{position:absolute; top:0; left:0; width:100%; height:100%; pointer-events:none; z-index:1;}
+
+/* ========================================
+   SECTIONS
+======================================== */
+section{padding:5rem 1.5rem; max-width:1200px; margin:auto;}
+section h2{font-size:2.2rem; text-align:center; margin-bottom:3rem; color:white;}
+section p{color:var(--muted);}
+.center{text-align:center;}
+
+/* ========================================
+   GRID & CARDS
+======================================== */
+.grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:2.5rem;}
+.card{background:var(--card-bg); padding:2rem; border-radius:24px;
+      box-shadow:0 15px 40px rgba(0,0,0,0.25); transition:transform .35s, box-shadow .35s;}
+.card:hover{transform:translateY(-10px); box-shadow:0 25px 60px rgba(255,77,141,0.35);}
+.tag{display:inline-block; font-size:.7rem; font-weight:600; background:#ffe3ee; color:var(--primary); padding:.3rem .8rem; border-radius:999px; margin-bottom:.8rem;}
+.card h3{margin-bottom:.8rem;}
+.card ul li{margin-bottom:.5rem;}
+
+/* ========================================
+   BLOG / STORY
+======================================== */
+section.blog p{margin-bottom:1.2rem; font-size:1.1rem;}
+section.blog .quote{font-size:1.3rem; font-weight:600; margin-top:2rem; font-style:italic; color:var(--primary);}
+section.blog{background:linear-gradient(135deg,#2a0057,#1b003b); border-radius:24px; padding:4rem 2rem; margin-top:3rem;}
+
+/* ========================================
+   CTA
+======================================== */
+section.cta{padding:4rem 1.5rem; text-align:center;}
+section.cta h2{font-size:2.5rem; margin-bottom:1rem;}
+section.cta .btn{padding:1rem 2.5rem; font-size:1.1rem;}
+
+/* ========================================
+   COLLAB
+======================================== */
+section.collab .card{cursor:pointer; text-align:center;}
+
+/* ========================================
+   ANIMATIONS
+======================================== */
+.fadeInUp{opacity:0; transform:translateY(20px); animation:fadeInUp 1s forwards;}
+@keyframes fadeInUp{to{opacity:1; transform:translateY(0);}}
 </style>
 </head>
 <body>
@@ -66,27 +120,30 @@ section.blog .quote { font-size:1.2rem; font-weight:600; margin-top:2rem; font-s
   <nav>
     <a href="#hero">Home</a>
     <a href="#products">Products</a>
-    <a href="#blog">Why This Exists</a>
+    <a href="#blog">Why</a>
     <a href="#collab">Collab</a>
   </nav>
 </header>
 
 <!-- HERO -->
 <section id="hero" class="hero">
-  <h1>Create a digital gift<br><span>she will never forget</span></h1>
-  <p>Interactive, emotional websites made to be gifted — for love, memories, and moments that matter.</p>
-  <a href="#products" class="btn">Explore Gifts</a>
+  <canvas id="heroCanvas"></canvas>
+  <div id="hearts"></div>
+  <div style="position:relative; z-index:2;">
+    <h1>Create a digital gift<br>she will never forget</h1>
+    <p>Interactive, magical websites designed to hold your feelings and memories in a beautiful experience.</p>
+    <a href="#products" class="btn">Explore Gifts</a>
+  </div>
 </section>
 
 <!-- PRODUCTS -->
 <section id="products">
-  <h2 class="center">Our Experiences</h2>
+  <h2>Our Experiences</h2>
   <div class="grid">
-
-    <div class="card">
+    <div class="card fadeInUp">
       <span class="tag">Best Seller</span>
       <h3>For the Girl I Love</h3>
-      <p>A romantic interactive journey revealing your feelings step by step with motion, music, and words.</p>
+      <p>A romantic interactive journey revealing your feelings with music, motion, and words.</p>
       <ul>
         <li>✔ Names & messages</li>
         <li>✔ Photos & music</li>
@@ -94,11 +151,10 @@ section.blog .quote { font-size:1.2rem; font-weight:600; margin-top:2rem; font-s
       </ul>
       <a class="btn small">Preview</a>
     </div>
-
-    <div class="card">
+    <div class="card fadeInUp" style="animation-delay:.1s">
       <span class="tag">Anniversary</span>
       <h3>Our Love Story</h3>
-      <p>A timeline-style experience showing milestones, memories, and how your journey unfolds.</p>
+      <p>Timeline-based experience showcasing milestones, memories, and journey together.</p>
       <ul>
         <li>✔ Dates & milestones</li>
         <li>✔ Memory sections</li>
@@ -106,11 +162,10 @@ section.blog .quote { font-size:1.2rem; font-weight:600; margin-top:2rem; font-s
       </ul>
       <a class="btn small">Preview</a>
     </div>
-
-    <div class="card">
+    <div class="card fadeInUp" style="animation-delay:.2s">
       <span class="tag">Emotional</span>
       <h3>Things I Never Said</h3>
-      <p>Confessions, apologies, or long-distance messages revealed slowly with care.</p>
+      <p>Confessions, apologies, or long-distance messages revealed slowly and personally.</p>
       <ul>
         <li>✔ Text-focused</li>
         <li>✔ Slow reveal flow</li>
@@ -118,11 +173,10 @@ section.blog .quote { font-size:1.2rem; font-weight:600; margin-top:2rem; font-s
       </ul>
       <a class="btn small">Preview</a>
     </div>
-
-    <div class="card">
+    <div class="card fadeInUp" style="animation-delay:.3s">
       <span class="tag">Long Distance</span>
       <h3>Distance Can’t Stop Us</h3>
-      <p>Love experience for long-distance couples with countdowns, time zones, and shared moments.</p>
+      <p>Long-distance couple experience with countdowns, time zones, and shared moments.</p>
       <ul>
         <li>✔ Time & date sync</li>
         <li>✔ Future countdown</li>
@@ -130,48 +184,92 @@ section.blog .quote { font-size:1.2rem; font-weight:600; margin-top:2rem; font-s
       </ul>
       <a class="btn small">Preview</a>
     </div>
-
   </div>
 </section>
 
-<!-- BLOG / WHY THIS EXISTS -->
+<!-- BLOG -->
 <section id="blog" class="blog">
-  <h1 class="center">Why This Exists</h1>
-  <p>This didn’t start as a business idea. It started as a feeling.</p>
-  <p>Sometimes, words are not enough. Messages feel too small. Gifts feel too generic.</p>
-  <p>I wanted to create something that could <strong>hold emotion</strong> — something private, intentional, and unforgettable.</p>
-  <p>These experiences are not meant for everyone. They are meant for <strong>one person</strong>.</p>
-  <p>Every product here exists to help people say what they struggle to express.</p>
+  <h2 class="center">Why This Exists</h2>
+  <p>This started as a feeling, not a business. Sometimes words aren't enough. Gifts feel too generic.</p>
+  <p>We wanted to create experiences that hold emotion — private, intentional, unforgettable.</p>
+  <p>Every product here helps express what is hard to say with normal words.</p>
   <p class="quote">“Some feelings deserve more than a message.”</p>
 </section>
 
 <!-- COLLAB -->
-<section id="collab" class="collab">
-  <h1 class="center">Collaborations</h1>
-  <p class="center">Sometimes, experiences are built together. If you’re here, you were invited for a reason.</p>
+<section id="collab">
+  <h2>Collaborations</h2>
   <div class="grid">
-
     <div class="card">
       <h3>Creator Collaboration</h3>
-      <p>Custom emotional experiences built with artists or creators.</p>
+      <p>Work with artists to craft custom emotional experiences.</p>
       <a href="https://example.com" class="btn small">Enter</a>
     </div>
-
     <div class="card">
       <h3>Brand Collaboration</h3>
-      <p>Limited edition digital gifts created for special campaigns.</p>
+      <p>Limited edition digital gifts created for campaigns.</p>
       <a href="https://example.com" class="btn small">Enter</a>
     </div>
-
   </div>
 </section>
 
 <!-- CTA -->
-<section class="cta center">
+<section class="cta">
   <h2>Stop sending boring gifts</h2>
   <p>Make something personal. Make something unforgettable. She’ll remember it forever.</p>
   <a class="btn">Create a Gift</a>
 </section>
 
+<!-- ================= JS: HERO STARS & HEARTS ================= -->
+<script>
+// =========== Stars / Aurora ===========
+const canvas = document.getElementById('heroCanvas');
+const ctx = canvas.getContext('2d');
+let w = canvas.width = window.innerWidth;
+let h = canvas.height = window.innerHeight;
+let stars=[];
+for(let i=0;i<180;i++){
+  stars.push({x:Math.random()*w, y:Math.random()*h, r:Math.random()*1.2, dx:(Math.random()-0.5)*0.2, dy:(Math.random()-0.5)*0.2});
+}
+function drawStars(){
+  ctx.clearRect(0,0,w,h);
+  for(let s of stars){
+    ctx.beginPath();
+    ctx.arc(s.x,s.y,s.r,0,Math.PI*2);
+    ctx.fillStyle='rgba(255,255,255,0.8)';
+    ctx.fill();
+    s.x+=s.dx; s.y+=s.dy;
+    if(s.x<0||s.x>w)s.dx*=-1;
+    if(s.y<0||s.y>h)s.dy*=-1;
+  }
+  requestAnimationFrame(drawStars);
+}
+drawStars();
+window.addEventListener('resize',()=>{w=canvas.width=window.innerWidth; h=canvas.height=window.innerHeight;});
+
+// =========== Floating Hearts ===========
+const heartsContainer = document.getElementById('hearts');
+function createHeart(){
+  const heart=document.createElement('div');
+  heart.innerHTML='❤️';
+  const size=Math.random()*30+15;
+  heart.style.position='absolute';
+  heart.style.left=Math.random()*window.innerWidth+'px';
+  heart.style.top=window.innerHeight+'px';
+  heart.style.fontSize=size+'px';
+  heart.style.opacity=Math.random()*0.6+0.4;
+  heart.style.pointerEvents='none';
+  heartsContainer.appendChild(heart);
+  let speed=Math.random()*1.5+0.5;
+  function animateHeart(){
+    let top=parseFloat(heart.style.top);
+    if(top<-50){heart.remove();return;}
+    heart.style.top=(top-speed)+'px';
+    requestAnimationFrame(animateHeart);
+  }
+  animateHeart();
+}
+setInterval(createHeart,200);
+</script>
 </body>
 </html>
