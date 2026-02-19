@@ -4,227 +4,173 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Digital Love Gifts</title>
-
 <style>
+/* ========== ROOT VARIABLES ========== */
 :root {
-  --bg: #fff7fb;
   --primary: #ff4d8d;
   --secondary: #7b61ff;
+  --bg: #fff7fb;
   --text: #1f1f2e;
   --muted: #6b6b7a;
-  --card: #ffffff;
 }
 
-* { box-sizing: border-box; margin: 0; padding: 0; }
+/* ========== GLOBAL STYLES ========== */
+* { box-sizing: border-box; margin:0; padding:0; }
+body { font-family: "Inter", system-ui, sans-serif; line-height:1.6; background: var(--bg); color: var(--text); }
+h1,h2,h3 { font-weight: 600; }
+p { color: var(--muted); }
+a { text-decoration:none; }
 
-body {
-  font-family: "Inter", system-ui, sans-serif;
-  background: linear-gradient(180deg, #fff, var(--bg));
-  color: var(--text);
-}
+/* ========== NAVIGATION ========== */
+header { display:flex; justify-content:space-between; align-items:center; padding:1rem 2rem; position:sticky; top:0; background:rgba(255,247,251,0.95); z-index:1000; box-shadow:0 2px 5px rgba(0,0,0,.05);}
+header h2 { font-size:1.3rem; color:var(--text);}
+header nav a { margin-left:1.5rem; color:var(--text); font-weight:500; transition:color .25s;}
+header nav a:hover { color:var(--primary); }
 
-section {
-  max-width: 1200px;
-  margin: auto;
-  padding: 5rem 1.5rem;
-}
+/* ========== HERO ========== */
+section.hero { text-align:center; padding:6rem 1.5rem; background:linear-gradient(180deg,#fff, var(--bg)); }
+section.hero h1 { font-size:clamp(2.5rem,5vw,4rem); line-height:1.1; margin-bottom:1rem; }
+section.hero h1 span { background: linear-gradient(90deg,var(--primary),var(--secondary)); -webkit-background-clip:text; color:transparent;}
+section.hero p { max-width:650px; margin:1rem auto 2rem; font-size:1.1rem; }
+.btn { display:inline-block; padding:1rem 2rem; border-radius:999px; background:linear-gradient(90deg,var(--primary),var(--secondary)); color:#fff; font-weight:600; transition:transform .3s ease; margin-top:1rem; }
+.btn:hover { transform:translateY(-3px); }
+.btn.small { padding:.7rem 1.4rem; font-size:.9rem; }
 
-.hero {
-  text-align: center;
-  padding-top: 7rem;
-}
+/* ========== GRID & CARDS ========== */
+.grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:2rem; margin-top:2rem;}
+.card { background:#fff; padding:2rem; border-radius:24px; box-shadow:0 20px 40px rgba(0,0,0,.08); transition: transform .35s; }
+.card:hover { transform:translateY(-8px);}
+.tag { display:inline-block; font-size:.7rem; font-weight:600; background:#ffe3ee; color:var(--primary); padding:.3rem .8rem; border-radius:999px; margin-bottom:.8rem;}
+.center { text-align:center;}
 
-.hero h1 {
-  font-size: clamp(2.5rem, 5vw, 4.2rem);
-  line-height: 1.1;
-  margin-bottom: 1.5rem;
-}
+/* ========== SECTIONS ========== */
+section { padding:5rem 1.5rem; max-width:1200px; margin:auto; }
+section.cta, section.blog, section.collab { padding-top:4rem; padding-bottom:4rem; }
 
-.hero span {
-  background: linear-gradient(90deg, var(--primary), var(--secondary));
-  -webkit-background-clip: text;
-  color: transparent;
-}
+/* ========== BLOG ========== */
+section.blog p { margin-bottom:1.2rem; }
+section.blog .quote { font-size:1.2rem; font-weight:600; margin-top:2rem; font-style:italic; color:var(--primary); }
 
-.hero p {
-  max-width: 650px;
-  margin: auto;
-  font-size: 1.15rem;
-  color: var(--muted);
-}
-
-.btn {
-  display: inline-block;
-  margin-top: 2.5rem;
-  padding: 1rem 2rem;
-  border-radius: 999px;
-  background: linear-gradient(90deg, var(--primary), var(--secondary));
-  color: white;
-  font-weight: 600;
-  text-decoration: none;
-  box-shadow: 0 15px 40px rgba(255,77,141,.35);
-  transition: transform .3s ease;
-}
-
-.btn:hover {
-  transform: translateY(-3px);
-}
-
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px,1fr));
-  gap: 2rem;
-}
-
-.card {
-  background: var(--card);
-  border-radius: 24px;
-  padding: 2.2rem;
-  box-shadow: 0 20px 50px rgba(0,0,0,.08);
-  transition: transform .35s ease;
-}
-
-.card:hover {
-  transform: translateY(-8px);
-}
-
-.card h3 {
-  margin-bottom: .7rem;
-}
-
-.badge {
-  display: inline-block;
-  background: #ffe3ee;
-  color: var(--primary);
-  padding: .35rem .8rem;
-  border-radius: 999px;
-  font-size: .75rem;
-  font-weight: 600;
-  margin-bottom: 1rem;
-}
-
-.center {
-  text-align: center;
-}
-
-.steps .card {
-  text-align: center;
-}
-
-.footer {
-  text-align: center;
-  padding-bottom: 7rem;
+/* ========== RESPONSIVE ========== */
+@media (max-width:600px){
+  section { padding:3rem 1rem;}
+  header { flex-direction:column; gap:.5rem; }
 }
 </style>
 </head>
-
 <body>
 
+<!-- NAV -->
+<header>
+  <h2>Digital Love Gifts</h2>
+  <nav>
+    <a href="#hero">Home</a>
+    <a href="#products">Products</a>
+    <a href="#blog">Why This Exists</a>
+    <a href="#collab">Collab</a>
+  </nav>
+</header>
+
 <!-- HERO -->
-<section class="hero">
-  <h1>Create a <span>digital gift</span><br>she will never forget</h1>
-  <p>
-    We design interactive websites made to be gifted to someone you love —
-    personalised, emotional, and impossible to ignore.
-  </p>
+<section id="hero" class="hero">
+  <h1>Create a digital gift<br><span>she will never forget</span></h1>
+  <p>Interactive, emotional websites made to be gifted — for love, memories, and moments that matter.</p>
   <a href="#products" class="btn">Explore Gifts</a>
-</section>
-
-<!-- WHAT -->
-<section>
-  <div class="grid">
-    <div class="card">
-      <span class="badge">Not a normal website</span>
-      <h3>Interactive Love Experiences</h3>
-      <p>
-        These are scroll-based, animated, music-enhanced experiences
-        that reveal your feelings step by step.
-      </p>
-    </div>
-
-    <div class="card">
-      <span class="badge">Made for one person</span>
-      <h3>Deeply Personal</h3>
-      <p>
-        Names, photos, memories, messages —
-        crafted into something that feels private and intentional.
-      </p>
-    </div>
-
-    <div class="card">
-      <span class="badge">Perfect for gifting</span>
-      <h3>Shareable Private Link</h3>
-      <p>
-        No apps. No login.
-        Just send a link and let the experience speak for you.
-      </p>
-    </div>
-  </div>
 </section>
 
 <!-- PRODUCTS -->
 <section id="products">
-  <h2 class="center" style="margin-bottom:3rem;">Popular Gift Experiences</h2>
-
+  <h2 class="center">Our Experiences</h2>
   <div class="grid">
+
     <div class="card">
-      <span class="badge">Best Seller</span>
+      <span class="tag">Best Seller</span>
       <h3>For the Girl I Love</h3>
-      <p>
-        A romantic interactive journey that slowly reveals
-        how much she truly means to you.
-      </p>
-      <a class="btn" style="margin-top:1.5rem;">Preview</a>
+      <p>A romantic interactive journey revealing your feelings step by step with motion, music, and words.</p>
+      <ul>
+        <li>✔ Names & messages</li>
+        <li>✔ Photos & music</li>
+        <li>✔ Private shareable link</li>
+      </ul>
+      <a class="btn small">Preview</a>
     </div>
 
     <div class="card">
-      <span class="badge">Anniversary</span>
-      <h3>Our Story</h3>
-      <p>
-        A timeline-style experience showing how everything started
-        and where it’s going.
-      </p>
-      <a class="btn" style="margin-top:1.5rem;">Preview</a>
+      <span class="tag">Anniversary</span>
+      <h3>Our Love Story</h3>
+      <p>A timeline-style experience showing milestones, memories, and how your journey unfolds.</p>
+      <ul>
+        <li>✔ Dates & milestones</li>
+        <li>✔ Memory sections</li>
+        <li>✔ Elegant animations</li>
+      </ul>
+      <a class="btn small">Preview</a>
     </div>
 
     <div class="card">
-      <span class="badge">Emotional</span>
+      <span class="tag">Emotional</span>
       <h3>Things I Never Said</h3>
-      <p>
-        Designed for confessions, apologies, or long-distance love.
-      </p>
-      <a class="btn" style="margin-top:1.5rem;">Preview</a>
+      <p>Confessions, apologies, or long-distance messages revealed slowly with care.</p>
+      <ul>
+        <li>✔ Text-focused</li>
+        <li>✔ Slow reveal flow</li>
+        <li>✔ Deeply personal</li>
+      </ul>
+      <a class="btn small">Preview</a>
     </div>
+
+    <div class="card">
+      <span class="tag">Long Distance</span>
+      <h3>Distance Can’t Stop Us</h3>
+      <p>Love experience for long-distance couples with countdowns, time zones, and shared moments.</p>
+      <ul>
+        <li>✔ Time & date sync</li>
+        <li>✔ Future countdown</li>
+        <li>✔ Emotional ending</li>
+      </ul>
+      <a class="btn small">Preview</a>
+    </div>
+
   </div>
 </section>
 
-<!-- HOW -->
-<section class="steps">
-  <h2 class="center" style="margin-bottom:3rem;">How it works</h2>
+<!-- BLOG / WHY THIS EXISTS -->
+<section id="blog" class="blog">
+  <h1 class="center">Why This Exists</h1>
+  <p>This didn’t start as a business idea. It started as a feeling.</p>
+  <p>Sometimes, words are not enough. Messages feel too small. Gifts feel too generic.</p>
+  <p>I wanted to create something that could <strong>hold emotion</strong> — something private, intentional, and unforgettable.</p>
+  <p>These experiences are not meant for everyone. They are meant for <strong>one person</strong>.</p>
+  <p>Every product here exists to help people say what they struggle to express.</p>
+  <p class="quote">“Some feelings deserve more than a message.”</p>
+</section>
+
+<!-- COLLAB -->
+<section id="collab" class="collab">
+  <h1 class="center">Collaborations</h1>
+  <p class="center">Sometimes, experiences are built together. If you’re here, you were invited for a reason.</p>
   <div class="grid">
+
     <div class="card">
-      <h3>Choose a gift</h3>
-      <p>Select an experience that fits your situation.</p>
+      <h3>Creator Collaboration</h3>
+      <p>Custom emotional experiences built with artists or creators.</p>
+      <a href="https://example.com" class="btn small">Enter</a>
     </div>
+
     <div class="card">
-      <h3>Personalize it</h3>
-      <p>Add your text, photos, music, and details.</p>
+      <h3>Brand Collaboration</h3>
+      <p>Limited edition digital gifts created for special campaigns.</p>
+      <a href="https://example.com" class="btn small">Enter</a>
     </div>
-    <div class="card">
-      <h3>Send the link</h3>
-      <p>She opens it. The moment does the rest.</p>
-    </div>
+
   </div>
 </section>
 
 <!-- CTA -->
-<section class="footer">
+<section class="cta center">
   <h2>Stop sending boring gifts</h2>
-  <p style="max-width:600px;margin:1rem auto 2rem;">
-    Make something personal. Something emotional.
-    Something she’ll remember.
-  </p>
-  <a class="btn">Create a Digital Gift</a>
+  <p>Make something personal. Make something unforgettable. She’ll remember it forever.</p>
+  <a class="btn">Create a Gift</a>
 </section>
 
 </body>
