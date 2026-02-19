@@ -1,202 +1,231 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Made With Love</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Digital Love Gifts</title>
 
-  <style>
-    :root {
-      --bg: #0b0b0f;
-      --card: #14141b;
-      --text: #f5f5f7;
-      --muted: #a1a1aa;
-      --accent: #ff6b81;
-    }
+<style>
+:root {
+  --bg: #fff7fb;
+  --primary: #ff4d8d;
+  --secondary: #7b61ff;
+  --text: #1f1f2e;
+  --muted: #6b6b7a;
+  --card: #ffffff;
+}
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+* { box-sizing: border-box; margin: 0; padding: 0; }
 
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: radial-gradient(circle at top, #151522, var(--bg));
-      color: var(--text);
-      line-height: 1.6;
-    }
+body {
+  font-family: "Inter", system-ui, sans-serif;
+  background: linear-gradient(180deg, #fff, var(--bg));
+  color: var(--text);
+}
 
-    section {
-      padding: 5rem 1.5rem;
-      max-width: 1100px;
-      margin: auto;
-    }
+section {
+  max-width: 1200px;
+  margin: auto;
+  padding: 5rem 1.5rem;
+}
 
-    h1, h2, h3 {
-      font-weight: 600;
-      letter-spacing: -0.02em;
-    }
+.hero {
+  text-align: center;
+  padding-top: 7rem;
+}
 
-    p {
-      color: var(--muted);
-    }
+.hero h1 {
+  font-size: clamp(2.5rem, 5vw, 4.2rem);
+  line-height: 1.1;
+  margin-bottom: 1.5rem;
+}
 
-    .hero {
-      min-height: 90vh;
-      display: flex;
-      align-items: center;
-    }
+.hero span {
+  background: linear-gradient(90deg, var(--primary), var(--secondary));
+  -webkit-background-clip: text;
+  color: transparent;
+}
 
-    .hero h1 {
-      font-size: clamp(2.5rem, 5vw, 4rem);
-      margin-bottom: 1rem;
-    }
+.hero p {
+  max-width: 650px;
+  margin: auto;
+  font-size: 1.15rem;
+  color: var(--muted);
+}
 
-    .hero p {
-      max-width: 520px;
-      font-size: 1.1rem;
-      margin-bottom: 2rem;
-    }
+.btn {
+  display: inline-block;
+  margin-top: 2.5rem;
+  padding: 1rem 2rem;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--primary), var(--secondary));
+  color: white;
+  font-weight: 600;
+  text-decoration: none;
+  box-shadow: 0 15px 40px rgba(255,77,141,.35);
+  transition: transform .3s ease;
+}
 
-    .btn {
-      display: inline-block;
-      padding: 0.9rem 1.6rem;
-      border-radius: 999px;
-      background: var(--accent);
-      color: #000;
-      text-decoration: none;
-      font-weight: 500;
-      transition: transform 0.25s ease, box-shadow 0.25s ease;
-    }
+.btn:hover {
+  transform: translateY(-3px);
+}
 
-    .btn:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 10px 30px rgba(255,107,129,0.35);
-    }
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px,1fr));
+  gap: 2rem;
+}
 
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 1.5rem;
-    }
+.card {
+  background: var(--card);
+  border-radius: 24px;
+  padding: 2.2rem;
+  box-shadow: 0 20px 50px rgba(0,0,0,.08);
+  transition: transform .35s ease;
+}
 
-    .card {
-      background: linear-gradient(180deg, #1b1b26, var(--card));
-      border-radius: 18px;
-      padding: 2rem;
-      transition: transform 0.3s ease;
-    }
+.card:hover {
+  transform: translateY(-8px);
+}
 
-    .card:hover {
-      transform: translateY(-6px);
-    }
+.card h3 {
+  margin-bottom: .7rem;
+}
 
-    .highlight {
-      color: var(--text);
-      font-size: 1.2rem;
-      margin-bottom: 0.5rem;
-    }
+.badge {
+  display: inline-block;
+  background: #ffe3ee;
+  color: var(--primary);
+  padding: .35rem .8rem;
+  border-radius: 999px;
+  font-size: .75rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
 
-    .steps .card {
-      text-align: center;
-    }
+.center {
+  text-align: center;
+}
 
-    .footer-cta {
-      text-align: center;
-      padding-bottom: 7rem;
-    }
+.steps .card {
+  text-align: center;
+}
 
-    @media (max-width: 600px) {
-      section {
-        padding: 4rem 1.2rem;
-      }
-    }
-  </style>
+.footer {
+  text-align: center;
+  padding-bottom: 7rem;
+}
+</style>
 </head>
 
 <body>
 
-  <!-- HERO -->
-  <section class="hero">
-    <div>
-      <h1>Turn your feelings<br>into something unforgettable</h1>
+<!-- HERO -->
+<section class="hero">
+  <h1>Create a <span>digital gift</span><br>she will never forget</h1>
+  <p>
+    We design interactive websites made to be gifted to someone you love —
+    personalised, emotional, and impossible to ignore.
+  </p>
+  <a href="#products" class="btn">Explore Gifts</a>
+</section>
+
+<!-- WHAT -->
+<section>
+  <div class="grid">
+    <div class="card">
+      <span class="badge">Not a normal website</span>
+      <h3>Interactive Love Experiences</h3>
       <p>
-        We create deeply personal, interactive websites designed as gifts —
-        not templates, but experiences that speak when words fall short.
+        These are scroll-based, animated, music-enhanced experiences
+        that reveal your feelings step by step.
       </p>
-      <a href="#products" class="btn">View Experiences</a>
     </div>
-  </section>
 
-  <!-- WHAT -->
-  <section>
-    <h2>What we make</h2>
-    <p style="max-width:600px; margin-top:1rem;">
-      These aren’t normal websites. They’re emotional journeys —
-      built to be opened by one person, and remembered forever.
-    </p>
-
-    <div class="grid" style="margin-top:2.5rem;">
-      <div class="card">
-        <div class="highlight">Interactive Love Letters</div>
-        <p>Scroll, tap, and reveal moments designed to feel intimate and real.</p>
-      </div>
-      <div class="card">
-        <div class="highlight">Personal Memory Worlds</div>
-        <p>Photos, words, music — woven into a cinematic experience.</p>
-      </div>
-      <div class="card">
-        <div class="highlight">Private & Shareable</div>
-        <p>One private link. No accounts. Just pure emotion.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- FEATURED PRODUCT -->
-  <section id="products">
-    <h2>Featured Experience</h2>
-
-    <div class="card" style="margin-top:2rem;">
-      <h3 style="font-size:1.6rem; margin-bottom:0.8rem;">
-        “If You Ever Wondered How Much I Love You”
-      </h3>
-      <p style="margin-bottom:1.5rem;">
-        A soft, unfolding interactive story — made to be opened slowly,
-        felt deeply, and remembered forever.
+    <div class="card">
+      <span class="badge">Made for one person</span>
+      <h3>Deeply Personal</h3>
+      <p>
+        Names, photos, memories, messages —
+        crafted into something that feels private and intentional.
       </p>
-      <a href="#" class="btn">Preview Experience</a>
     </div>
-  </section>
 
-  <!-- HOW IT WORKS -->
-  <section class="steps">
-    <h2>How it works</h2>
-
-    <div class="grid" style="margin-top:2.5rem;">
-      <div class="card">
-        <h3>1. Choose</h3>
-        <p>Select an experience that matches how you feel.</p>
-      </div>
-      <div class="card">
-        <h3>2. Personalize</h3>
-        <p>Add names, messages, photos, and music.</p>
-      </div>
-      <div class="card">
-        <h3>3. Gift</h3>
-        <p>Send a private link — no apps, no installs.</p>
-      </div>
+    <div class="card">
+      <span class="badge">Perfect for gifting</span>
+      <h3>Shareable Private Link</h3>
+      <p>
+        No apps. No login.
+        Just send a link and let the experience speak for you.
+      </p>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- FINAL CTA -->
-  <section class="footer-cta">
-    <h2>Make something she’ll never forget</h2>
-    <p style="margin:1rem auto 2rem; max-width:520px;">
-      Some gifts fade. This one lives forever.
-    </p>
-    <a href="#" class="btn">Create a Gift</a>
-  </section>
+<!-- PRODUCTS -->
+<section id="products">
+  <h2 class="center" style="margin-bottom:3rem;">Popular Gift Experiences</h2>
+
+  <div class="grid">
+    <div class="card">
+      <span class="badge">Best Seller</span>
+      <h3>For the Girl I Love</h3>
+      <p>
+        A romantic interactive journey that slowly reveals
+        how much she truly means to you.
+      </p>
+      <a class="btn" style="margin-top:1.5rem;">Preview</a>
+    </div>
+
+    <div class="card">
+      <span class="badge">Anniversary</span>
+      <h3>Our Story</h3>
+      <p>
+        A timeline-style experience showing how everything started
+        and where it’s going.
+      </p>
+      <a class="btn" style="margin-top:1.5rem;">Preview</a>
+    </div>
+
+    <div class="card">
+      <span class="badge">Emotional</span>
+      <h3>Things I Never Said</h3>
+      <p>
+        Designed for confessions, apologies, or long-distance love.
+      </p>
+      <a class="btn" style="margin-top:1.5rem;">Preview</a>
+    </div>
+  </div>
+</section>
+
+<!-- HOW -->
+<section class="steps">
+  <h2 class="center" style="margin-bottom:3rem;">How it works</h2>
+  <div class="grid">
+    <div class="card">
+      <h3>Choose a gift</h3>
+      <p>Select an experience that fits your situation.</p>
+    </div>
+    <div class="card">
+      <h3>Personalize it</h3>
+      <p>Add your text, photos, music, and details.</p>
+    </div>
+    <div class="card">
+      <h3>Send the link</h3>
+      <p>She opens it. The moment does the rest.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="footer">
+  <h2>Stop sending boring gifts</h2>
+  <p style="max-width:600px;margin:1rem auto 2rem;">
+    Make something personal. Something emotional.
+    Something she’ll remember.
+  </p>
+  <a class="btn">Create a Digital Gift</a>
+</section>
 
 </body>
 </html>
